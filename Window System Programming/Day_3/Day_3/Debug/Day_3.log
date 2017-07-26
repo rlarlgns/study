@@ -1,0 +1,22 @@
+﻿빌드 시작: 2017-07-26 오후 2:26:04
+     1>2 노드의 "C:\Users\kihoon\Desktop\github\study\Window System Programming\Day_3\Day_3\Day_3.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _WINDOWS /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\Day_3.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Day_3.cpp Day_3Dlg.cpp
+         Day_3Dlg.cpp
+         코드를 생성하고 있습니다...
+         컴파일하고 있습니다...
+         Day_3.cpp
+         코드를 생성하고 있습니다...
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.1\bin\x86\rc.exe /D _DEBUG /D _UNICODE /D UNICODE /D _AFXDLL /l"0x0412" /IDebug\ /nologo /fo"Debug\Day_3.res" Day_3.rc 
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\kihoon\Desktop\github\study\Window System Programming\Day_3\Debug\Day_3.exe" /INCREMENTAL /NOLOGO /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\Include\Manifest\dpiaware.manifest" /Debug /PDB:"C:\Users\kihoon\Desktop\github\study\Window System Programming\Day_3\Debug\Day_3.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /ENTRY:"wWinMainCRTStartup" /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\kihoon\Desktop\github\study\Window System Programming\Day_3\Debug\Day_3.lib" /MACHINE:X86 Debug\Day_3.res
+         Debug\Day_3.obj
+         Debug\Day_3Dlg.obj
+         Debug\stdafx.obj
+         Day_3.vcxproj -> C:\Users\kihoon\Desktop\github\study\Window System Programming\Day_3\Debug\Day_3.exe
+     1>"C:\Users\kihoon\Desktop\github\study\Window System Programming\Day_3\Day_3\Day_3.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
+
+빌드했습니다.
+
+경과 시간: 00:00:00.86
