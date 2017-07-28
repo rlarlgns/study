@@ -19,15 +19,15 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// 대화 상자 데이터입니다.
+	// 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_ABOUTBOX };
 #endif
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV 지원입니다.
 
-// 구현입니다.
+														// 구현입니다.
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -108,7 +108,7 @@ BOOL CDay_4Dlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 큰 아이콘을 설정합니다.
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
-	// TODO: 여기에 추가 초기화 작업을 추가합니다.
+									// TODO: 여기에 추가 초기화 작업을 추가합니다.
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -165,9 +165,9 @@ HCURSOR CDay_4Dlg::OnQueryDragIcon()
 
 /*
 FILE READ
- - 하드 디스크의 파일을 파일 매핑으로 읽어와 출력
+- 하드 디스크의 파일을 파일 매핑으로 읽어와 출력
 CreateFile
- - 읽어 들여올 파일을 선택하여 그 핸들 값을 가져온다.
+- 읽어 들여올 파일을 선택하여 그 핸들 값을 가져온다.
 */
 void CDay_4Dlg::OnBnClickedFilereadBtn()
 {
@@ -184,7 +184,7 @@ void CDay_4Dlg::OnBnClickedFilereadBtn()
 	int nResult;
 	// 3. 파일을 메모리 처럼 사용
 	// 텍스트 파일의 앞 10글자가 유니코드일 경우
-	if(IsTextUnicode(PtrUni, 10, &nResult))
+	if (IsTextUnicode(PtrUni, 10, &nResult))
 	{
 		//내용을 메시지박스로 출력한다.
 		MessageBoxW(PtrUni, _T("Uni코드"), MB_OK);
@@ -192,12 +192,12 @@ void CDay_4Dlg::OnBnClickedFilereadBtn()
 	}
 	else
 	{
-		char* PtrAnsi =(char *)MapViewOfFile(hFMap, FILE_MAP_READ, 0,0,0);
+		char* PtrAnsi = (char *)MapViewOfFile(hFMap, FILE_MAP_READ, 0, 0, 0);
 		strcpy(PtrAnsi, ("ansi"));
 		MessageBoxA(NULL, PtrAnsi, ("ANSI코드"), MB_OK);
 		UnmapViewOfFile(PtrAnsi);
 	}
-	
+
 	//4. 파일뷰를 닫는다.
 	CloseHandle(hFMap);
 	CloseHandle(hFile);
@@ -205,7 +205,7 @@ void CDay_4Dlg::OnBnClickedFilereadBtn()
 
 /*
 FILE WRITE
- - 파일을 불러와 매핑하고 포인터를 사용해 파일을 제어
+- 파일을 불러와 매핑하고 포인터를 사용해 파일을 제어
 */
 void CDay_4Dlg::OnBnClickedFilewriteBtn()
 {
@@ -239,8 +239,8 @@ HANDLE hFMap;
 TCHAR* PtrFile;
 /*
 Create, Connect Pipe
- - "MyMemShareMapping" 이름을 가진 파일 매핑 오브젝트를 생성한다.
- - 각기 다른 프로세스에서 동일한 가상 메모리를 가리키도록 함
+- "MyMemShareMapping" 이름을 가진 파일 매핑 오브젝트를 생성한다.
+- 각기 다른 프로세스에서 동일한 가상 메모리를 가리키도록 함
 */
 void CDay_4Dlg::OnBnClickedConnectBtn()
 {
@@ -254,7 +254,7 @@ void CDay_4Dlg::OnBnClickedConnectBtn()
 
 /*
 Disconnect
- - 파일 매핑 오브젝트 해제
+- 파일 매핑 오브젝트 해제
 */
 void CDay_4Dlg::OnBnClickedDisconnectBtn()
 {
@@ -281,26 +281,26 @@ afx_msg LRESULT CDay_4Dlg::OnUserMessage1(WPARAM w, LPARAM l)
 // MyAsyncIO
 
 char strData[] =
-	"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\r\n"
-	"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\r\n"
-	"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\r\n";
+"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\r\n"
+"BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\r\n"
+"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\r\n";
 
 /*
 Event btn
- - 데이터를 텍스트 파일로 저장하는데 비동기 IO를 이용해서 동시에 IO를 처리
+- 데이터를 텍스트 파일로 저장하는데 비동기 IO를 이용해서 동시에 IO를 처리
 */
 void CDay_4Dlg::OnBnClickedEventBtn()
 {
 	HANDLE hFile;
 	TCHAR filename[] = _T("c:\\ABC.txt");
 	hFile = CreateFile(filename, GENERIC_WRITE, 0, 0,
-						CREATE_ALWAYS,
-						FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, 0);
+		CREATE_ALWAYS,
+		FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED, 0);
 
 	/*
 	OVERLAPPED 구조체
-	 - 비동기 IO를 하기 위해 생성
-	 - hEvent는 핸들러로서 IO의 완료를 알리기 위해 이벤트를 담는다.
+	- 비동기 IO를 하기 위해 생성
+	- hEvent는 핸들러로서 IO의 완료를 알리기 위해 이벤트를 담는다.
 	*/
 	OVERLAPPED ov = { 0, };
 	ov.hEvent = CreateEvent(NULL, TRUE, TRUE, NULL);
@@ -317,7 +317,7 @@ void CDay_4Dlg::OnBnClickedEventBtn()
 
 	/*
 	WriteFile
-	 - offset을 이용해서 서로 다른 위치에 데이터를 씀
+	- offset을 이용해서 서로 다른 위치에 데이터를 씀
 	*/
 	ov.Offset = 0;
 	ov.Offset = strlen(strData) * sizeof(char) * 0;
@@ -360,8 +360,8 @@ VOID WINAPI MyCallBack(DWORD errCode, DWORD numOfByteTransfered,
 
 /*
 WriteFileEx
- - 비동기 전용 함수로 콜백함수를 등록하는 방식
- - APC( Asynchronous Procedure Call ) 큐를 이용해서 완료 함수를 호출
+- 비동기 전용 함수로 콜백함수를 등록하는 방식
+- APC( Asynchronous Procedure Call ) 큐를 이용해서 완료 함수를 호출
 */
 void CDay_4Dlg::OnBnClickedCallbackBtn()
 {
@@ -399,11 +399,11 @@ HANDLE hEvent;
 
 /*
 MakeDataThread
- - 50MEGA의 데이터를 생성
+- 50MEGA의 데이터를 생성
 */
 DWORD WINAPI MakeDataTread(LPVOID param)
 {
-	buf = (char*)calloc(50, MEGA); 
+	buf = (char*)calloc(50, MEGA);
 	p = buf;
 	char sTmp[256];
 	int tlen;
@@ -424,7 +424,7 @@ DWORD WINAPI MakeDataTread(LPVOID param)
 
 /*
 WriteDataThread
- - 이벤트를 받기까지 기다리다 작업 수행
+- 이벤트를 받기까지 기다리다 작업 수행
 */
 DWORD WINAPI WriteDataTread(LPVOID param)
 {
@@ -450,9 +450,9 @@ DWORD WINAPI WriteDataTread(LPVOID param)
 
 /*
 Big file btn
- - 큰 파일을 만드는 작업을 수행하는데 데이터를 만드는 스레드와 
- 파일에 작성하는 스레드로 나누어 작업을 수행
- - 이벤트를 생성해서 동기화 처리
+- 큰 파일을 만드는 작업을 수행하는데 데이터를 만드는 스레드와
+파일에 작성하는 스레드로 나누어 작업을 수행
+- 이벤트를 생성해서 동기화 처리
 */
 void CDay_4Dlg::OnBnClickedBigfileBtn()
 {
@@ -467,7 +467,10 @@ void CDay_4Dlg::OnBnClickedBigfileBtn()
 	CreateThread(0, 0, WriteDataTread, 0, 0, &id);
 }
 
-
+/*
+MMF btn
+- 빅데이터 파일을 읽어와 파일 매핑 오브젝트를 만들고 비동기로 파일을 복사
+*/
 void CDay_4Dlg::OnBnClickedMmfBtn()
 {
 	HANDLE hFileSource;
